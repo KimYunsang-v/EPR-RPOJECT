@@ -281,3 +281,29 @@ input.text-darkblue {
 .card {
     overflow-y: auto;
 }
+
+.date-picker {
+    height: 23px;
+    font-size: 12px;
+}
+
+.line-chart {
+    position: relative;
+    height: 40vh;
+}
+
+.built-in-progressbar {
+    bottom: -1.5px;
+    position: absolute;
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+.built-in-progressbar::-webkit-slider-thumb {
+    /* -webkit-appearance: none; */
+}
+
+.built-in-progressbar:focus {
+    outline: none;
+}

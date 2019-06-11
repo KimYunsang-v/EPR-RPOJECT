@@ -1,3 +1,10 @@
+/** 
+ * 프로젝트/디렉토리 추가 폼을 포함한 모달
+ * 
+ * 2019.05.22
+ * @file AddModal 정의
+ * @author 김승신
+ */
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import store from '../../../../stores';
@@ -37,7 +44,7 @@ class AddModal extends React.Component {
         if (this.state.gubun === 'project') {
         projectBtnClass = "btn btn-dark-1";
             dirBtnClass = "btn btn-secondary";
-            contentForm = (<NewProjectForm reload={this.props.reload} memberInfo={memberInfo} modalId="addModal"/>);
+            contentForm = (<NewProjectForm key={Date.now().toString()} reload={this.props.reload} memberInfo={memberInfo} modalId="addModal"/>);
             header = "새로운 프로젝트를 추가합니다.";
         } else {
             projectBtnClass = "btn btn-secondary";

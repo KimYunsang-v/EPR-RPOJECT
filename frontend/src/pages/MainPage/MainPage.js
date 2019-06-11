@@ -1,3 +1,11 @@
+/** 
+ * 프로젝트/디렉토리/업무 관리 페이지 정의
+ * 
+ * 2019.05.22
+ * @file MainPage 정의
+ * @author 김승신, 김윤상
+ */
+
 import React, { Component } from "react";
 import ProjectSideBarContainer from "./containers/ProjectSideBarContainer";
 import HeaderContainer from "./containers/HeaderContainer";
@@ -53,18 +61,18 @@ class MainPage extends Component {
 
     if (mainContentViewLevel === 'detail') {
       mainContent = (
-        <div className="row"  >
+        <div className="row" style={{ height: '850px' }}>
           <div className="col-6">
-            <div className="card shadow mb-4" style={{ height: '700px' }}>
+            <div className="card shadow" style={{ height: '100%' }}>
               <Pfile />
             </div>
           </div>
           <div className="col-6">
-            <div className="row" style={{ height: '480px' }}>
+            <div className="row" style={{ height: '59%' }}>
               <DetailContanier reloadPage={this.reloadPage.bind(this)} />
             </div>
-            <div className="row" style={{ height: '20px' }}></div>
-            <div className="row" style={{ height: '350px' }}>
+            <div className="row" style={{ height: '2%' }}></div>
+            <div className="row" style={{ height: '39%' }}>
               <LogContainer />
             </div>
           </div>
@@ -95,7 +103,7 @@ class MainPage extends Component {
               closeModal={this.closeModal.bind(this)}
               visible={this.state.visible}
             />
-            <div className="container-fluid pb-0" style={{ height: '90%', maxHeight: '880px', overflow: 'hidden' }}>
+            <div className="container-fluid pb-0" style={{ height: '90%', maxHeight: '840px', overflow: 'hidden' }}>
               {mainContent}
             </div>
           </div>

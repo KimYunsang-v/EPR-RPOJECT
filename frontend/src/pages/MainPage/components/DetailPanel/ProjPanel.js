@@ -1,3 +1,11 @@
+/** 
+ * 프로젝트 상세보기 및 수정 폼을 포함한 패널 정의
+ * 
+ * 2019.05.22
+ * @file ProjPanel 정의
+ * @author 김승신
+ */
+
 import React, { Component } from 'react';
 import { correct, disable } from '../../../../stores/modules/projectState';
 import stores from '../../../../stores';
@@ -226,6 +234,7 @@ class ProjPanel extends Component {
                                     value={ project.progress }
                                     onChange={(e) => { 
                                         if(Number(e.target.value) > 100) e.target.value = 100;
+                                        if(Number(e.target.value) < 0) e.target.value = 0;
                                         this.onFormFieldChange(e, project); 
                                     }}
                                 />
@@ -288,11 +297,22 @@ class ProjPanel extends Component {
                         <div className="col-4">
                                 <div className="col-12 text-right pr-0">
                                     <div className="progress mt-2">
+                                        <input name="progress" type="range" className="built-in-progressbar pr-2"
+                                            min="0" max="100"
+                                            value={ project.progress }
+                                            onChange={(e) => { 
+                                                if(Number(e.target.value) > 100) e.target.value = 100;
+                                                if(Number(e.target.value) < 0) e.target.value = 0;
+                                                this.onFormFieldChange(e, project); 
+                                        }}/>
                                         <div 
-                                            className={`${this.progressColor(project.progress)}`} 
-                                            role="progressbar" style={{width: `${project.progress}%`}} 
+                                            className={`${this.progressColor(project.progress)} text-white`} 
+                                            role="progressbar" 
+                                            style={{width: `${project.progress}%`}} 
                                             aria-valuemin="0" aria-valuemax="100"
-                                            >
+                                        >
+                                            <div className="mr-1" >
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

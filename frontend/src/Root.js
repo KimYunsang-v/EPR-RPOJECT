@@ -1,6 +1,13 @@
+/** 
+ * Route 컴포넌트 정의
+ * 
+ * 2019.05.22
+ * @file 라우팅을 전담하는 Route 컴포넌트를 정의.
+ * @author 김승신
+ */
 import React from 'react';
 import { Route, BrowserRouter, withRouter, Switch } from 'react-router-dom';
-import { MainPage, NotFound, LoginPage, AdminPage, RegisterPage, ProfilePage } from "./pages";
+import { MainPage, NotFound, LoginPage, AdminPage, ProjectInfoPage } from "./pages";
 import { Provider } from 'react-redux';
 import store from './stores';
 
@@ -16,18 +23,29 @@ const RouteAsUserInfo = withRouter(({ match, location, history }) => {
     if(userInfo){
         authToken = userInfo.authToken;
     }
+
+    // console.log("로그인",userInfo)
     let routes = [];
     if ( !(userState && userState.hasOwnProperty('userInfo') && userState.userInfo)) {
+        
         routes = [
             { path: '/', component: LoginPage },
         ]
     } else {
         routes = [
-            { path: '/', component: MainPage },
+            // { path: '/', component: MainPage },
             { path: '/main', component: MainPage },
-            { path: '/register', component : RegisterPage},
-        ]
-        if(authToken.authorities[0].authority==="ROLE_ADMIN") routes.push({ path: '/adminpage', component: AdminPage })
+        ];
+        
+        if(authToken.authorities[0].authority==="ROLE_ADMIN") { 
+            routes.push({ path: '/adminpage', component: AdminPage })
+            routes.push({ path: '/projectInfo', component: ProjectInfoPage })
+            routes.push({ path: '/', component: AdminPage })
+        }
+        else{
+            routes.push({ path: '/', component: MainPage })
+        }
+
     }
     return (
         <Switch>
